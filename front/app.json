@@ -1,0 +1,10 @@
+{
+  "name": "deezer_remake",
+  "displayName": "deezer_remake",
+  "expo": {
+    "name": "deezer_remake",
+    "slug": "deezer_remake",
+    "version": "1.0.0",
+    "assetBundlePatterns": ["**/*"]
+  }
+}
