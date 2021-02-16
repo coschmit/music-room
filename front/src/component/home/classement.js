@@ -9,12 +9,10 @@ class Classement extends Component {
     const songs = this.props.classement.songs;
     const use = songs[id].users.findIndex((u) => u === this.props.user.id);
     if (use === -1) {
-      console.log("use === -1");
       songs[id].users.push(this.props.user.id);
       songs[id].vote++;
       this.props.dispatch(updateClassement(songs));
     } else {
-      console.log("else use === -1");
       this.props.dispatch({
         type: "client/addNotife",
         data: "You've already voted for him.",

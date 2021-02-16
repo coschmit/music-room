@@ -23,17 +23,20 @@ class Home extends Component {
 
   async UNSAFE_componentWillMount() {
     const { dispatch } = this.props;
-    console.log(
-      "Device Info",
-      "\nbrand: ",
-      DeviceInfo.getBrand(),
-      "\nmodel: ",
-      DeviceInfo.getModel()
-    );
-    DeviceInfo.getCarrier().then((res) => console.log("carrier: ", res));
-    DeviceInfo.getDeviceName().then((res) => console.log("devicename: ", res));
-    console.log("Platform", Platform.Version);
-    console.log("platform version", Platform.Version);
+
+    //  Device info but in front
+
+    // console.log(
+    //   "Device Info",
+    //   "\nbrand: ",
+    //   DeviceInfo.getBrand(),
+    //   "\nmodel: ",
+    //   DeviceInfo.getModel()
+    // );
+    // DeviceInfo.getCarrier().then((res) => console.log("carrier: ", res));
+    // DeviceInfo.getDeviceName().then((res) => console.log("devicename: ", res));
+    // console.log("Platform", Platform.Version);
+    // console.log("platform version", Platform.Version);
     dispatch(createClassement(null));
     dispatch(getClassement());
 
@@ -56,12 +59,12 @@ class Home extends Component {
   }
 
   componentWillReceiveProps() {
-    // checkSession((e) => {
-    //   if (e === false) {
-    //     this.setState({ mode: 2 });
-    //   }
-    //   this.setState({ disab: e });
-    // });
+    checkSession((e) => {
+      if (e === false) {
+        this.setState({ mode: 2 });
+      }
+      this.setState({ disab: e });
+    });
   }
 
   serviceMode = async () => {
@@ -114,20 +117,18 @@ class Home extends Component {
         />
 
         {this.props.notife.message !== "" && (
-          <>
-            <View style={{ position: "absolute", bottom: 100 }}>
+          /* <View style={{ position: "absolute", bottom: 100 }}>
               <Button
                 onPress={() => {
                   SecureStore.deleteItemAsync("token", {}).then(() => {
                     Actions.login();
                   });
                 }}
-                title="diconenct"
+                title="disconnect"
               />
-            </View>
+            </View> */
 
-            <Toaster msg={this.props.notife.message} />
-          </>
+          <Toaster msg={this.props.notife.message} />
         )}
       </View>
     );

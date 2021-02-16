@@ -37,7 +37,6 @@ export default class ClassementController {
       if (!classements) {
         return res.status(404).send({ message: "No classement found" });
       }
-      console.log("classements found", classements);
       Classement.findOneAndUpdate(
         { _id: classements[0]._id },
         { songs: req.body.songs },

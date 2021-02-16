@@ -3,7 +3,6 @@ import { Actions } from "react-native-router-flux";
 
 export function loginUser(event) {
   return (dispatch) => {
-    console.log("loginUser func");
     callApi(`user/${event.email.toLowerCase()}`, "get", null, event.password)
       .then((body) => {
         return dispatch({
@@ -12,7 +11,6 @@ export function loginUser(event) {
         });
       })
       .catch((e) => {
-        console.log("body err?", e);
         return dispatch({
           type: "client/addNotife",
           data: e,
@@ -29,7 +27,6 @@ export const signupUser = (event) => {
         return Actions.code({ email: event.email });
       })
       .catch((e) => {
-        console.log("err signup", e);
         return dispatch({
           type: "client/addNotife",
           data: e,
@@ -60,7 +57,6 @@ export function updateUserPrivate(event, userId) {
   return (dispatch) => {
     callApi(`user/update/private/${userId}`, "post", event)
       .then((body) => {
-        console.log("result private", body);
         return dispatch({
           type: "http/login",
           data: body,
@@ -143,7 +139,6 @@ export function facebookLoginAction(event) {
 }
 
 export function facebookLinkAction(event, userId) {
-  console.log("event", event);
   return (dispatch) => {
     callApi(`user/link/facebook/${userId}`, "post", event)
       .then((body) => {

@@ -10,16 +10,13 @@ const ShowProfile = (props) => {
   const [isFriend, setIsFriend] = useState(false);
 
   useEffect(() => {
-    console.log("useEffect", props.email);
     callApi(`user/${props.email}`, "get").then((body) => {
-      console.log("callApi then");
       const user01 = jwtDecode(body.token);
       const index = user01.friends.findIndex((e) => e === this.props.myEmail);
       let isFriend01 = false;
       if (index !== -1 || user01.isPrivateInfo) {
         isFriend01 = true;
       }
-      console.log("user01 isFriend01", user01, isFriend01);
 
       setUser(user01);
       setIsFriend(isFriend01);

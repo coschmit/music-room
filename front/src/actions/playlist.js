@@ -5,7 +5,6 @@ export function getPlaylist(userId) {
   return (dispatch) => {
     callApi(`playlist/all/${userId}/`, "get")
       .then((body) => {
-        console.log("okkkk", body);
         return dispatch({
           type: "http/getAllPlaylist",
           data: body,
@@ -58,14 +57,12 @@ export function addPlaylistSong(id, playlistId, userId, songName) {
   return (dispatch) => {
     callApi(`playlist/update/${playlistId}/${userId}/${id}/${songName}`, "put")
       .then((body) => {
-        console.log("STEP666");
         return dispatch({
           type: "http/addSongPlaylist",
           data: { body, playlistId },
         });
       })
       .catch((e) => {
-        console.log("STEP BRUH", e);
         return disptach({ type: "client/addNotife", data: e });
       });
   };
@@ -93,7 +90,6 @@ export function deletePlaylistUser(playlistId, userId, targetId) {
   return (dispatch) => {
     callApi(`playlist/delete/user/${playlistId}/${userId}/${targetId}`, "put")
       .then((body) => {
-        console.log("DONE DELETE");
         return dispatch({
           type: "http/updatePlaylist",
           data: { body, playlistId },

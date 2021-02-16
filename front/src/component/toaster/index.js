@@ -1,16 +1,23 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Toast } from "react-native-ui-lib";
+import { View } from "react-native";
 
 const Toaster = (props) => {
   const { msg } = props;
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setVisible(false);
+    }, 3000);
+  }, []);
+
   return (
     <Toast
       message={msg}
       position="bottom"
       backgroundColor="#2A282A"
-      visible={true}
+      visible={visible}
       actions={[
         {
           label: "Close",

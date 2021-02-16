@@ -51,7 +51,6 @@ class AddNewUser extends Component {
           <FlatList
             data={users}
             renderItem={({ item, index }) => {
-              console.log("u,key", item, index);
               return item.super === true ? (
                 <View key={index} />
               ) : (

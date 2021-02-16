@@ -31,7 +31,6 @@ export const callApi = (endpoint, method = "get", body, psw) => {
             return resolve(body);
           })
           .catch((e) => {
-            console.log("err callApi", e);
             return reject(e.response.body.message);
           });
       }

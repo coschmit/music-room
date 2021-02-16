@@ -7,7 +7,7 @@ import { facebookLoginAction, loginUser } from "../../actions/user";
 import Toaster from "../toaster";
 import { LoginButton, AccessToken } from "react-native-fbsdk";
 import { Input } from "react-native-elements";
-import { Button, TouchableOpacity, View, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 
 class Login extends Component {
   renderTextField = ({ input, label, secureTextEntry }) => (
@@ -85,6 +85,7 @@ class Login extends Component {
           </TouchableOpacity>
 
           <LoginButton
+            permissions={["email"]}
             style={{ width: "100%", height: 40, paddingVertical: 10 }}
             onLoginFinished={(error, result) => {
               if (error) {
@@ -93,7 +94,6 @@ class Login extends Component {
                 console.log("login is cancelled.");
               } else {
                 AccessToken.getCurrentAccessToken().then((data) => {
-                  console.log(data.accessToken.toString());
                   this.props.dispatch(facebookLoginAction(data));
                 });
               }

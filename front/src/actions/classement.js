@@ -22,7 +22,6 @@ export function createClassement(data) {
   return (dispatch) => {
     callApi("classement/create", "post", data)
       .then((body) => {
-        console.log("thenn then");
         return dispatch({
           type: "http/getClassement",
           data: body,
@@ -41,7 +40,6 @@ export function updateClassement(songs) {
   return (dispatch) => {
     callApi(`classement/update`, "post", { songs })
       .then((body) => {
-        console.log("THEN call api", body);
         return dispatch({
           type: "http/updateClassement",
           data: body,

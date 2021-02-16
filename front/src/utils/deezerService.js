@@ -36,10 +36,6 @@ export function getPlaylists() {
   });
 }
 
-export function printFunc() {
-  console.log(DeezerManager);
-}
-
 export function connectDeezer() {
   return new Promise((resolve, rejetc) => {
     DeezerManager.connect((decision) => {

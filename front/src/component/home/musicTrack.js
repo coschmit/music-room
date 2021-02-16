@@ -40,7 +40,7 @@ class MusicTrack extends Component {
               })
             }
           />
-          <Button title="Add new trackList" onPress={() => Actions.newRoom()} />
+          <Button title="Add new room" onPress={() => Actions.newRoom()} />
           <Icon
             raised
             name="star"

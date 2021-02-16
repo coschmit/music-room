@@ -19,6 +19,11 @@ mongoose.connect(
 );
 
 app.use((req, res, next) => {
+  const userAgent = req.headers["user-agent"];
+
+  // get device informations, only with real devices
+  console.log("Device Informations: ", userAgent);
+
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Request-Method",
@@ -46,15 +51,10 @@ db.on("error", () => {
 // test mail
 
 app.post("/test/sendmail", (req, res) => {
-  send(
-    "nonreply@musicroon.tqt",
-    "xonini9655@febeks.com",
-    "Account validation",
-    {
-      code: "v2",
-      name: "beautetoutcourt",
-    }
-  );
+  send("nonreply@musicroon.tqt", "fagoyab813@wedbo.net", "Account validation", {
+    code: "v2",
+    name: "beautetoutcourt",
+  });
 });
 
 db.once("open", () => {

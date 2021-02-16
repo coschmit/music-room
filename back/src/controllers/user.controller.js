@@ -4,8 +4,6 @@ import { generateToken } from "../utils/token";
 import { send } from "../utils/sendEmail";
 import bcrypt from "bcryptjs";
 import FB from "fb";
-import { reverse } from "lodash";
-import fb from "fb/lib/fb";
 
 const createParams = "{email,password,firstName,lastName,url,bio}";
 const updateParamsPublic = "{firstName,lastName,tags,musicTags,isPrivateInfo}";
@@ -22,7 +20,6 @@ const createCode = () => {
 export default class UserController {
   static create(req, res) {
     const params = filter(req.body, createParams);
-    console.log("api call signup");
     if (
       !params ||
       !params.email ||
@@ -35,7 +32,6 @@ export default class UserController {
 
     User.findOne({ email: params.email })
       .then((u) => {
-        console.log("step 1");
         if (u) {
           return res
             .status(400)
@@ -60,18 +56,15 @@ export default class UserController {
           isEmailVerifiedToken: tokenStr,
         });
         user.generateHash(params.password);
-        console.log("step 2");
         user.save((err) => {
           if (err) {
             return res.status(500).send({ message: "internal serveur error" });
           }
           const token = generateToken(user);
-          console.log("step 3");
           return res.json({ token });
         });
       })
       .catch(() => {
-        console.log("error step 1");
         return res.status(500).send({ message: "internal serveur error" });
       });
   }
@@ -113,7 +106,6 @@ export default class UserController {
 
   static getMe(req, res) {
     const psw = req.headers["x-pass"];
-    console.log("coucouuu");
     User.findOne({ email: req.params.email })
 
       .then((user) => {
@@ -134,7 +126,6 @@ export default class UserController {
         return res.json({ token }); /* istanbul ignore next */
       })
       .catch(() => {
-        console.log("api err bruh");
         return res.status(500).send({ message: "Internal serveur error" });
       });
   }
@@ -186,7 +177,7 @@ export default class UserController {
   static updatePrivate(req, res) {
     const params = filter(req.body, updateParamsPrivate);
     const paramsToUpdate = {};
-    console.log("params private: ", params);
+
     User.findOne({ email: params.email })
       .then((uTmp) => {
         if (uTmp) {
@@ -194,11 +185,9 @@ export default class UserController {
         }
 
         if (params.password) {
-          console.log("bruh password");
           paramsToUpdate.password = bcrypt.hashSync(params.password, 10);
         }
         if (params.email) {
-          console.log("bruh email");
           paramsToUpdate.email = params.email;
         }
         User.findOneAndUpdate(
@@ -313,6 +302,7 @@ export default class UserController {
       req.body.accessToken.toString() !== ""
     ) {
       FB.setAccessToken(req.body.accessToken.toString());
+
       FB.api(
         "me",
         {
@@ -320,7 +310,11 @@ export default class UserController {
           access_token: req.body.accessToken.toString(),
         },
         (fbRes) => {
-          console.log("fbRes", fbRes);
+          if (fbRes.email === undefined) {
+            res.status(402).send({
+              message: "There is a problem with Fb Api, try again later...",
+            });
+          }
           User.findOne({ email: fbRes.email })
             .then((u) => {
               if (u) {

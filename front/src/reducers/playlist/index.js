@@ -11,8 +11,6 @@ export function setListOfPlaylist(state, data) {
 }
 
 export function updatePlaylist(state, data) {
-  console.log("STEP667");
-  console.log("updatePlaylist here", state, data);
   const playlists = state.getIn(["playlists"]).toJS();
   const index = playlists.findIndex((e) => e._id === data.playlistId);
 

@@ -12,9 +12,7 @@ class ImportPlaylist extends Component {
   };
 
   UNSAFE_componentWillMount() {
-    console.log("before getPlaylists");
     getPlaylists().then((playlistDeezer) => {
-      console.log("getPlaylist done");
       const tmp = [];
       playlistDeezer.forEach((e) => {
         e.is = false;

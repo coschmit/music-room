@@ -8,30 +8,31 @@ const emailTemplate = (name, code) => {
    
 
       body {
+          font-family: sans-serif !important;
           background: #fff;
           margin: 0px;
           text-align: center;
       }
       .head{
-          background:#e47f02;
+          background: #4B6C9C;
           color: #fff;
       }
 
       .head h1 {
+          font-family: sans-serif !important;
           font-size: 50px;
           font-weight: normal;
           line-height: 100px;
           margin-top:100px;
       }
       .button {
-          background: #39ce00;
           color: #fff;
           line-height: 50px;
           text-decoration: none;
           text-align: center;
           margin-top: 50px;
           margin-bottom: 50px;
-          background-color: #0b8dbd;
+          background-color: #333033;
       }
 
       .button a {
@@ -64,7 +65,7 @@ const emailTemplate = (name, code) => {
     </td>
     </tr>
     </table>
-    <table bgcolor="#e47f02" class="head" style="background: #e47f02;" cellpadding="0" cellspacing="0" border="0" border-collapse="collapse" width="100%">
+    <table bgcolor="#e47f02" class="head" style="background: #4B6C9C;" cellpadding="0" cellspacing="0" border="0" border-collapse="collapse" width="100%">
     <tr>
     <td style="text-align: center;" colspan="3">
     <h1>Welcome to Music-Room</h1>
@@ -93,17 +94,29 @@ const emailTemplate = (name, code) => {
     `;
 };
 
+// const transporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: "colinschmitt472@gmail.com",
+//     pass: "Colin180600",
+//   },
+// });
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp-mail.outlook.com",
+  secureConnection: false, // TLS requires secureConnection to be false
+  port: 587, // port for secure SMTP
   auth: {
-    user: "colinschmitt472@gmail.com",
-    pass: "Colin180600",
+    user: "musicroom42-dev@outlook.com",
+    pass: "MusicRoom42",
+  },
+  tls: {
+    ciphers: "SSLv3",
   },
 });
 
 export const send = (from, to, subject, body) => {
   const emailBody = {
-    from: `<${from}>`,
+    from: "musicroom42-dev@outlook.com",
     to: `${to}`,
     subject: `${subject}`,
     html: emailTemplate(body.name, body.code),

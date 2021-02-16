@@ -18,7 +18,6 @@ const Playlist = ({ playlist, user }) => {
   const publicArray = [];
 
   if (playlist && playlist.playlists.length !== 0) {
-    console.log("playlist", playlist);
     playlist.playlists.forEach((e) => {
       if (e.type === "private") {
         privateArray.push(e);

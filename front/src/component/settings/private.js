@@ -56,7 +56,6 @@ class Private extends Component {
                 console.log("login is cancelled.");
               } else {
                 AccessToken.getCurrentAccessToken().then((data) => {
-                  console.log(data.accessToken.toString());
                   this.props.dispatch(
                     facebookLinkAction(data, this.props.user.id)
                   );

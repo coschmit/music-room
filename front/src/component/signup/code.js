@@ -26,7 +26,7 @@ class Code extends Component {
         <Text>Code</Text>
         <Button
           title="Verify"
-          color="#841584"
+          color="#59BC83"
           onPress={() => {
             this.props.dispatch(verifyUser(code, this.props.email));
           }}

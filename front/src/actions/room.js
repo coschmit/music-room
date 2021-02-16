@@ -24,7 +24,6 @@ export const getRoom = (user) => {
   return (dispatch) => {
     callApi(`room/all/${user.userId}/${user.lat}/${user.long}`, "get")
       .then((body) => {
-        console.log("room/all", body);
         return dispatch({
           type: "http/getAllRoom",
           data: body,
@@ -61,7 +60,6 @@ export function updatePrivateRoom(data, roomId, userId) {
   return (dispatch) => {
     callApi(`room/updatePrivate/${roomId}/${userId}`, "post", data)
       .then((body) => {
-        console.log("putepute", body);
         return dispatch({
           type: "http/updateRoom",
           data: { body, roomId },

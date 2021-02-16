@@ -118,7 +118,6 @@ export default class PlaylistController {
   }
 
   static addMusicToList(req, res) {
-    console.log("HOLAA", req.params);
     Playlist.findOne({ _id: req.params.playlistId }).then((playlist) => {
       if (!playlist) {
         return res.status(404).send({ message: "No playlist found" });
@@ -134,7 +133,6 @@ export default class PlaylistController {
           .status(403)
           .send({ message: "Your are not allowed to access this playlist" });
       }
-      console.log("playlist =", playlist);
       const songs = playlist.songs;
       songs.push({
         id: req.params.newId,
@@ -151,7 +149,6 @@ export default class PlaylistController {
           return res.json({ message: "Your playlist", playlist });
         })
         .catch((e) => {
-          console.log("error", e);
           return res.status(500).send({ message: "Internal server error" });
         });
     });
@@ -287,11 +284,9 @@ export default class PlaylistController {
       )
         .then((playlist) => {
           playlist.songs = _.sortBy(playlist.songs, ["grade"]);
-          console.log("DONE?");
           return res.json({ message: "Your playlist", playlist });
         })
         .catch((e) => {
-          console.log("error", e);
           return res.status(500).send({ message: "Internal server error" });
         });
     });
