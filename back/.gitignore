@@ -4,6 +4,7 @@
 
 # Xcode
 #
+mongo/
 build/
 *.pbxuser
 !default.pbxuser
