@@ -32,16 +32,10 @@ for android ```npx react-native run-android```
 
 ## Images
 
-### Rooms
-![Rooms](https://github.com/coschmit/music-room/blob/main/README_img/select_room_page.jpg)
+
+<p float="left">
 <img src="https://github.com/coschmit/music-room/blob/main/README_img/select_room_page.jpg" alt="" width="300"/>
-
-### Map
-![Map](https://github.com/coschmit/music-room/blob/main/README_img/map_page.jpg)
-
-### Room Player
-![Player](https://github.com/coschmit/music-room/blob/main/README_img/room_page.jpg)
-
-### Add songs
-![AddSongs](https://github.com/coschmit/music-room/blob/main/README_img/search_song_page.png)
-
+<img src="https://github.com/coschmit/music-room/blob/main/README_img/map_page.jpg" alt="" width="300"/>
+<img src="https://github.com/coschmit/music-room/blob/main/README_img/room_page.jpg" alt="" width="300"/>
+<img src="https://github.com/coschmit/music-room/blob/main/README_img/search_song_page.png" alt="" width="300"/>
+</p>
