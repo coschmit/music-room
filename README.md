@@ -1,6 +1,11 @@
-# music-room
+# Music-room
 
-Projet en partenariat avec Deezer. Créez en groupe une application mobile complète de playlist collaborative en utilisant les SDK et API de Deezer. Au programme : du développement natif mobile, du développement de back-end et de la création d'API REST.
+🇫🇷
+Projet en partenariat avec Deezer. Création d'une application mobile complète de playlist collaborative en utilisant les SDK et API de Deezer. Au programme : du développement natif mobile, du développement de back-end et de la création d'API REST.
+
+🇺🇸
+Project in partnership with Deezer. Creation of a complete mobile collaborative playlist application using Deezer's SDKs and APIs. On the program: native mobile development, back-end development and the creation of REST APIs.
+
 
 ## Run Application
 ```
@@ -29,6 +34,7 @@ for android ```npx react-native run-android```
 
 ### Rooms
 ![Rooms](https://github.com/coschmit/music-room/blob/main/README_img/select_room_page.jpg)
+<img src="https://github.com/coschmit/music-room/blob/main/README_img/select_room_page.jpg" alt="" width="300"/>
 
 ### Map
 ![Map](https://github.com/coschmit/music-room/blob/main/README_img/map_page.jpg)
