@@ -75,7 +75,7 @@ const Playlist = ({ playlist, user }) => {
                 raised
                 name="add"
                 type="add"
-                color="#f50"
+                color="#59BC83"
                 size={15}
                 onPress={() => {
                   Actions.newPlaylist({ typePlaylist: "private" });
